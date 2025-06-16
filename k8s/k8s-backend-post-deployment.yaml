@@ -30,7 +30,7 @@ spec:
               name: backend-post-secret-volume
           livenessProbe:
             httpGet:
-              path: /backend/user/v1/k8s/liveness
+              path: /backend/post/v1/k8s/liveness
               port: 8080
             initialDelaySeconds: 30
             periodSeconds: 5
@@ -39,7 +39,7 @@ spec:
 
           readinessProbe:
             httpGet:
-              path: /backend/user/v1/k8s/readiness
+              path: /backend/post/v1/k8s/readiness
               port: 8080
             initialDelaySeconds: 30
             periodSeconds: 5
