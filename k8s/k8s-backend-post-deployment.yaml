@@ -28,6 +28,23 @@ spec:
               name: backend-post-config-volume
             - mountPath: /etc/secret
               name: backend-post-secret-volume
+          livenessProbe:
+            httpGet:
+              path: /backend/user/v1/k8s/liveness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 3
+
+          readinessProbe:
+            httpGet:
+              path: /backend/user/v1/k8s/readiness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 3
 
       volumes:
         - name: backend-post-config-volume
